@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>My Website</title>
+    <style>
+      /* Center the content */
+      body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        height: 100vh;
+      }
+      /* Style the text boxes */
+      #textbox1 {
+        resize: none; /* Disable resizing of the first text box */
+        width: 500px;
+        height: 300px;
+        background-color: #eee;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+      }
+      #textbox2 {
+        width: 500px;
+        height: 300px;
+        font-size: 16px;
+        font-family: Arial, sans-serif;
+      }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1>Welcome to My Website</h1>
+    </header>
+    <button onclick="goBack()">Back</button>
+    <br><br>
+    <form>
+      <label for="textbox1">Question 1: </label>
+      <br>
+      <textarea id="textbox1" name="textbox1" rows="10" cols="50" readonly>
+        #include <stdio.h>
+        #include <string.h>
+        
+        void vulnerable_function(char *input) {
+            char buffer[8];
+            strcpy(buffer, input);
+            printf("Buffer content: %s\n", buffer);
+        }
+        
+        int main() {
+            char *input = "Will this cause a buffer overflow, look carefully before answering";
+            vulnerable_function(input);
+            return 0;
+        }
+        </textarea>
+      <br><br>
+      <label for="textbox2">Text Box 2:</label>
+      <br>
+      <textarea id="textbox2" name="textbox2" rows="10" cols="50"></textarea>
+      <br><br>
+      <div style="text-align: center;">
+        <input type="submit" value="Submit">
+      </div>
+    </form>
+    <script>
+      function goBack() {
+        window.history.back();
+      }
+    </script>
+  </body>
+</html>
